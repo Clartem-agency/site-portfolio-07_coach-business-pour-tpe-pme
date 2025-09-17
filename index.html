@@ -13,17 +13,20 @@
     <meta property="og:description" content="Coaching d'affaires pour dirigeants de PME. Sortez de l'opérationnel et transformez votre vision en feuille de route stratégique.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://horizon-strategie.com">
-    <meta property="og:image" content="https://horizon-strategie.com/og-image.jpg">
+    <meta property="og:image" content="https://horizon-strategie.com/images/apercu-partage-social.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Julien Moreau - Coach d'Affaires pour Dirigeants de PME">
     <meta name="twitter:description" content="Coaching d'affaires pour dirigeants de PME. Sortez de l'opérationnel et transformez votre vision en feuille de route stratégique.">
-    <meta name="twitter:image" content="https://horizon-strategie.com/og-image.jpg">
+    <meta name="twitter:image" content="https://horizon-strategie.com/images/apercu-partage-social.webp">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AJOUT : CDN pour ScrollReveal.js -->
+    <script src="https://unpkg.com/scrollreveal" defer></script>
 
     <style>
         /* Custom scrollbar for a more refined look */
@@ -40,8 +43,34 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #eaa946;
         }
+        /* Le Smooth Scrolling est géré ici pour les ancres natives, et en JS pour les clics sur les boutons */
         html {
             scroll-behavior: smooth;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('images/fond-hero.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1; /* Opacité faible pour un effet subtil derrière le dégradé */
+            z-index: 0;
+        }
+
+        /* AMÉLIORATION FAQ : Style pour la transition fluide */
+        .faq-content {
+            overflow: hidden;
+            transition: height 0.3s ease-in-out;
+        }
+        
+        /* AJOUT : Style pour cacher les éléments avant l'animation ScrollReveal */
+        .reveal-up, .reveal-left, .reveal-right {
+            visibility: hidden;
         }
     </style>
 
@@ -88,20 +117,6 @@
                     boxShadow: {
                         'card': '0 4px 20px rgba(0, 0, 0, 0.05)',
                         'hero': '0 6px 24px rgba(251, 196, 107, 0.4)',
-                    },
-                    keyframes: {
-                        "accordion-down": {
-                            from: { height: "0" },
-                            to: { height: "var(--radix-accordion-content-height)" },
-                        },
-                        "accordion-up": {
-                            from: { height: "var(--radix-accordion-content-height)" },
-                            to: { height: "0" },
-                        },
-                    },
-                    animation: {
-                        "accordion-down": "accordion-down 0.2s ease-out",
-                        "accordion-up": "accordion-up 0.2s ease-out",
                     },
                 },
             },
@@ -168,17 +183,17 @@
                 </div>
             </section>
 
-            <!-- =================================================================
+           <!-- =================================================================
             ABOUT SECTION
             ================================================================== -->
             <section id="about" class="py-20 bg-background">
                 <div class="container mx-auto px-6">
                     <div class="max-w-6xl mx-auto">
-                        <div class="text-center mb-16">
+                        <div class="text-center mb-16 reveal-up">
                             <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Mon Parcours : De COO à Sparring Partner pour Dirigeants</h2>
                         </div>
                         <div class="grid lg:grid-cols-2 gap-12 items-center">
-                            <div class="order-2 lg:order-1 space-y-6">
+                            <div class="order-2 lg:order-1 space-y-6 reveal-left">
                                 <div class="space-y-4">
                                     <p class="text-lg text-muted-foreground leading-relaxed">Pendant 15 ans, j'ai été Directeur des Opérations. J'ai eu la chance de vivre de l'intérieur la transformation d'une PME de 20 à plus de 200 collaborateurs. Mon rôle n'était pas dans les nuages, mais dans les tranchées : structurer les équipes, optimiser les process, et surtout, m'assurer que la vision du dirigeant se traduise en actions concrètes sur le terrain. J'ai connu la pression des objectifs, la complexité des décisions et le défi constant de garder le cap dans la tempête de la croissance.</p>
                                     <p class="text-lg text-muted-foreground leading-relaxed">Au fil des années, j'ai vu d'innombrables dirigeants brillants, passionnés par leur métier, devenir prisonniers de leur propre succès. Bloqués dans le quotidien, ils passaient plus de temps à éteindre des incendies qu'à dessiner l'avenir. Le constat était toujours le même : le principal frein à leur croissance n'était plus le marché, mais leur propre difficulté à passer du rôle d'expert à celui de leader. C'est pour cette raison que j'ai fondé Horizon Stratégie. Ma mission est simple : vous donner les outils et le cadre pour que vous puissiez à nouveau piloter votre entreprise, et non plus la subir.</p>
@@ -188,11 +203,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="order-1 lg:order-2 flex justify-center">
-                                <div class="relative">
-                                    <div class="w-80 h-80 rounded-full overflow-hidden shadow-hero">
-                                        <img src="https://i.imgur.com/uR1b92t.jpeg" alt="Julien Moreau, Coach d'affaires et sparring partner stratégique" class="w-full h-full object-cover">
-                                    </div>
+                            <div class="order-1 lg:order-2 flex justify-center reveal-right">
+                                <div class="relative w-full max-w-md lg:max-w-none">
+                                    <!-- AJOUT : Lazy Loading pour l'image -->
+                                    <img src="images/portrait-julien-moreau.webp" alt="Julien Moreau, Coach d'affaires et sparring partner stratégique" class="w-full h-full object-cover rounded-lg shadow-hero" loading="lazy" decoding="async">
                                     <div class="absolute -bottom-4 -right-4 bg-accent text-accent-foreground px-6 py-3 rounded-full font-semibold shadow-card">15 ans d'expérience COO</div>
                                 </div>
                             </div>
@@ -201,19 +215,20 @@
                 </div>
             </section>
 
+            
             <!-- =================================================================
             SERVICES SECTION
             ================================================================== -->
             <section id="services" class="py-20 bg-gradient-section">
                 <div class="container mx-auto px-6">
                     <div class="max-w-6xl mx-auto">
-                        <div class="text-center mb-16">
+                        <div class="text-center mb-16 reveal-up">
                             <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Mes Accompagnements : Des Solutions Concrètes pour Piloter votre Croissance</h2>
                             <p class="text-xl text-muted-foreground max-w-3xl mx-auto">Chaque dirigeant est unique, c'est pourquoi mes programmes sont conçus pour s'adapter à votre contexte. L'objectif reste le même : vous fournir un cadre, une méthode et un soutien pour atteindre vos objectifs.</p>
                         </div>
                         <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
                             <!-- Premium Program Card -->
-                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 lg:col-span-3 rounded-lg">
+                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 lg:col-span-3 rounded-lg reveal-up">
                                 <div class="flex flex-col space-y-1.5 p-6 pb-4">
                                     <div class="flex items-center gap-4 mb-4">
                                         <div class="p-3 bg-accent/10 rounded-lg">
@@ -253,7 +268,7 @@
                                 </div>
                             </div>
                             <!-- Workshop Cards -->
-                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 rounded-lg">
+                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 rounded-lg reveal-up">
                                 <div class="flex flex-col space-y-1.5 p-6">
                                     <div class="flex items-center gap-4 mb-4">
                                         <div class="p-3 bg-accent/10 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-accent"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
@@ -281,7 +296,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 md:col-span-2 rounded-lg">
+                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 md:col-span-2 rounded-lg reveal-up">
                                 <div class="flex flex-col space-y-1.5 p-6">
                                     <div class="flex items-center gap-4 mb-4">
                                         <div class="p-3 bg-accent/10 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-accent"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
@@ -323,13 +338,13 @@
             <section id="approche" class="py-20 bg-background">
                 <div class="container mx-auto px-6">
                     <div class="max-w-6xl mx-auto">
-                        <div class="text-center mb-16">
+                        <div class="text-center mb-16 reveal-up">
                             <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Ma Méthodologie : Un Parcours en 4 Étapes vers la Clarté</h2>
                             <p class="text-xl text-muted-foreground max-w-3xl mx-auto">Le succès n'est pas le fruit du hasard, mais d'un processus structuré. Pour garantir des résultats concrets, notre collaboration suit un cadre clair et éprouvé, qui allie écoute, stratégie et action.</p>
                         </div>
                         <div class="grid md:grid-cols-2 gap-8">
                             <!-- Step 1 -->
-                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg">
+                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg reveal-up">
                                 <div class="flex flex-col space-y-1.5 p-6 pb-4">
                                     <div class="flex items-center gap-4 mb-4">
                                         <div class="relative">
@@ -346,7 +361,7 @@
                                 </div>
                             </div>
                             <!-- Step 2 -->
-                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg">
+                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg reveal-up">
                                 <div class="flex flex-col space-y-1.5 p-6 pb-4">
                                     <div class="flex items-center gap-4 mb-4">
                                         <div class="relative">
@@ -363,7 +378,7 @@
                                 </div>
                             </div>
                             <!-- Step 3 -->
-                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg">
+                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg reveal-up">
                                 <div class="flex flex-col space-y-1.5 p-6 pb-4">
                                     <div class="flex items-center gap-4 mb-4">
                                         <div class="relative">
@@ -380,7 +395,7 @@
                                 </div>
                             </div>
                             <!-- Step 4 -->
-                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg">
+                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg reveal-up">
                                 <div class="flex flex-col space-y-1.5 p-6 pb-4">
                                     <div class="flex items-center gap-4 mb-4">
                                         <div class="relative">
@@ -397,7 +412,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-16 flex justify-center">
+                        <div class="mt-16 flex justify-center reveal-up">
                             <div class="bg-accent-muted px-8 py-4 rounded-full border-2 border-accent/20">
                                 <p class="text-primary font-semibold text-center">Un parcours structuré pour des résultats garantis</p>
                             </div>
@@ -412,13 +427,13 @@
             <section id="testimonials" class="py-20 bg-gradient-section">
                 <div class="container mx-auto px-6">
                     <div class="max-w-6xl mx-auto">
-                        <div class="text-center mb-16">
+                        <div class="text-center mb-16 reveal-up">
                             <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Leurs Résultats, Votre Meilleure Garantie</h2>
                             <p class="text-xl text-muted-foreground max-w-3xl mx-auto">Je suis fier d'accompagner des dirigeants qui osent transformer leur entreprise. Voici ce qu'ils disent de notre collaboration.</p>
                         </div>
                         <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
                             <!-- Testimonial 1 -->
-                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg">
+                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg reveal-up">
                                 <div class="p-8">
                                     <div class="mb-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-accent group-hover:scale-110 transition-transform duration-300"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg></div>
                                     <blockquote class="text-muted-foreground text-base leading-relaxed mb-6 italic">"Avant de travailler avec Julien, j'avais l'impression de subir la croissance de mon agence. J'étais partout et nulle part à la fois. En 6 mois, il m'a aidé à structurer mon équipe de direction et à mettre en place des outils de pilotage simples. Résultat : j'ai gagné 10h par semaine et, surtout, j'ai retrouvé le plaisir de me concentrer sur la stratégie. C'est le meilleur investissement que j'ai fait pour mon entreprise et pour moi-même."</blockquote>
@@ -434,7 +449,7 @@
                                 </div>
                             </div>
                             <!-- Testimonial 2 -->
-                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg">
+                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg reveal-up">
                                 <div class="p-8">
                                     <div class="mb-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-accent group-hover:scale-110 transition-transform duration-300"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg></div>
                                     <blockquote class="text-muted-foreground text-base leading-relaxed mb-6 italic">"Notre équipe commerciale stagnait. Julien a animé un atelier avec nos managers qui a été un véritable électrochoc. Son approche directe et son expérience opérationnelle ont permis de mettre le doigt sur nos vrais blocages. Nous avons redéfini notre processus de vente et les résultats ont suivi : +25% de chiffre d'affaires en un an."</blockquote>
@@ -450,7 +465,7 @@
                                 </div>
                             </div>
                             <!-- Testimonial 3 -->
-                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg">
+                            <div class="bg-card border-0 shadow-card hover:shadow-hero transition-all duration-300 group rounded-lg reveal-up">
                                 <div class="p-8">
                                     <div class="mb-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-accent group-hover:scale-110 transition-transform duration-300"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg></div>
                                     <blockquote class="text-muted-foreground text-base leading-relaxed mb-6 italic">"La journée 'Vision Stratégique' avec Julien nous a permis d'aligner toute l'équipe de direction sur une feuille de route claire pour l'année à venir. Son regard externe et sa capacité à synthétiser nos débats ont été incroyablement précieux. Nous avons gagné des mois de travail et d'hésitations."</blockquote>
@@ -467,15 +482,15 @@
                             </div>
                         </div>
                         <div class="mt-16 grid md:grid-cols-3 gap-8 text-center">
-                            <div class="bg-card p-6 rounded-lg shadow-card">
+                            <div class="bg-card p-6 rounded-lg shadow-card reveal-up">
                                 <div class="text-3xl font-bold text-accent mb-2">+25%</div>
                                 <p class="text-muted-foreground">Croissance moyenne du CA</p>
                             </div>
-                            <div class="bg-card p-6 rounded-lg shadow-card">
+                            <div class="bg-card p-6 rounded-lg shadow-card reveal-up">
                                 <div class="text-3xl font-bold text-accent mb-2">10h</div>
                                 <p class="text-muted-foreground">Heures récupérées par semaine</p>
                             </div>
-                            <div class="bg-card p-6 rounded-lg shadow-card">
+                            <div class="bg-card p-6 rounded-lg shadow-card reveal-up">
                                 <div class="text-3xl font-bold text-accent mb-2">100%</div>
                                 <p class="text-muted-foreground">Dirigeants satisfaits</p>
                             </div>
@@ -490,18 +505,18 @@
             <section id="faq" class="py-20 bg-background">
                 <div class="container mx-auto px-6">
                     <div class="max-w-4xl mx-auto">
-                        <div class="text-center mb-16">
+                        <div class="text-center mb-16 reveal-up">
                             <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Vos Questions, Mes Réponses</h2>
                             <p class="text-xl text-muted-foreground">Voici les réponses aux questions les plus fréquentes. Pour toute autre interrogation, n'hésitez pas à planifier un appel.</p>
                         </div>
-                        <div class="bg-card rounded-lg shadow-card p-8">
+                        <div class="bg-card rounded-lg shadow-card p-8 reveal-up">
                             <div class="w-full space-y-4" data-orientation="vertical">
                                 <!-- FAQ Item 1 -->
                                 <div data-state="closed" data-orientation="vertical" class="border border-border rounded-lg px-6">
                                     <h3 data-orientation="vertical" data-state="closed" class="flex">
                                         <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" class="faq-trigger flex flex-1 items-center justify-between hover:underline [&[data-state=open]>svg]:rotate-180 text-left text-lg font-semibold text-primary hover:text-accent transition-colors py-6">Quelle est la différence entre un coach et un consultant ?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-200"><path d="m6 9 6 6 6-6"></path></svg></button>
                                     </h3>
-                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down" hidden="">
+                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content text-sm">
                                         <div class="pt-0 text-muted-foreground leading-relaxed pb-6">C'est une excellente question. Un consultant analyse une situation et vous apporte une solution 'clé en main'. Mon approche est différente. En tant que coach, je vous aide à construire VOTRE propre solution. Je vous apporte la structure, les outils et le challenge, mais je m'assure que la stratégie finale vienne de vous et de vos équipes. C'est la garantie qu'elle sera parfaitement adaptée à votre culture et, surtout, qu'elle sera appliquée sur le long terme.</div>
                                     </div>
                                 </div>
@@ -510,7 +525,7 @@
                                     <h3 data-orientation="vertical" data-state="closed" class="flex">
                                         <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" class="faq-trigger flex flex-1 items-center justify-between hover:underline [&[data-state=open]>svg]:rotate-180 text-left text-lg font-semibold text-primary hover:text-accent transition-colors py-6">Comment mesure-t-on le retour sur investissement (ROI) de vos accompagnements ?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-200"><path d="m6 9 6 6 6-6"></path></svg></button>
                                     </h3>
-                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down" hidden="">
+                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content text-sm">
                                         <div class="pt-0 text-muted-foreground leading-relaxed pb-6">La mesure est au cœur de ma méthode. Dès notre première étape de diagnostic, nous définissons ensemble des indicateurs de succès (KPIs) clairs et chiffrés. Ils peuvent être financiers (croissance du CA, marge), opérationnels (productivité, taux de rétention des talents) ou personnels (temps gagné pour le dirigeant). Notre suivi régulier est basé sur ces KPIs, ce qui nous permet de mesurer concrètement l'impact de mon intervention.</div>
                                     </div>
                                 </div>
@@ -519,22 +534,22 @@
                                     <h3 data-orientation="vertical" data-state="closed" class="flex">
                                         <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" class="faq-trigger flex flex-1 items-center justify-between hover:underline [&[data-state=open]>svg]:rotate-180 text-left text-lg font-semibold text-primary hover:text-accent transition-colors py-6">Mon entreprise n'est pas dans le secteur de la tech. Votre approche est-elle adaptée ?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-200"><path d="m6 9 6 6 6-6"></path></svg></button>
                                     </h3>
-                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down" hidden="">
+                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content text-sm">
                                         <div class="pt-0 text-muted-foreground leading-relaxed pb-6">Absolument. J'accompagne majoritairement des PME de services, quel que soit leur secteur (conseil, agences, ingénierie, etc.). Les défis de la croissance - structurer une équipe, déléguer, piloter par la donnée, garder une vision claire - sont universels. Mon cadre méthodologique s'adapte précisément à votre contexte et à vos enjeux spécifiques.</div>
                                     </div>
                                 </div>
                                 <!-- FAQ Item 4 -->
-                                <div data-state="open" data-orientation="vertical" class="border border-border rounded-lg px-6">
-                                    <h3 data-orientation="vertical" data-state="open" class="flex">
-                                        <button type="button" aria-expanded="true" data-state="open" data-orientation="vertical" class="faq-trigger flex flex-1 items-center justify-between hover:underline [&[data-state=open]>svg]:rotate-180 text-left text-lg font-semibold text-primary hover:text-accent transition-colors py-6">Je n'ai pas beaucoup de temps à consacrer au coaching. Est-ce un problème ?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-200"><path d="m6 9 6 6 6-6"></path></svg></button>
+                                <div data-state="closed" data-orientation="vertical" class="border border-border rounded-lg px-6">
+                                    <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                        <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" class="faq-trigger flex flex-1 items-center justify-between hover:underline [&[data-state=open]>svg]:rotate-180 text-left text-lg font-semibold text-primary hover:text-accent transition-colors py-6">Je n'ai pas beaucoup de temps à consacrer au coaching. Est-ce un problème ?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-200"><path d="m6 9 6 6 6-6"></path></svg></button>
                                     </h3>
-                                    <div data-state="open" role="region" data-orientation="vertical" class="faq-content overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content text-sm">
                                         <div class="pt-0 text-muted-foreground leading-relaxed pb-6">Au contraire, mon accompagnement est conçu pour vous faire GAGNER du temps. Nos sessions bimensuelles de 60 minutes sont des moments à haute valeur ajoutée, préparés et focalisés sur l'action. L'objectif est que chaque session vous permette de prendre des décisions plus rapides et plus efficaces, libérant ainsi un temps précieux pour le reste de vos semaines.</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center mt-12">
+                        <div class="text-center mt-12 reveal-up">
                             <div class="bg-accent-muted p-6 rounded-lg border border-accent/20">
                                 <p class="text-primary font-medium">D'autres questions ? Je suis là pour y répondre lors de notre premier échange.</p>
                             </div>
@@ -543,80 +558,147 @@
                 </div>
             </section>
             
+
             <!-- =================================================================
             CONTACT SECTION
             ================================================================== -->
-            <section id="contact" class="py-20 bg-gradient-hero text-primary-foreground">
+            <section id="contact" class="py-20 bg-gradient-section">
                 <div class="container mx-auto px-6">
                     <div class="max-w-4xl mx-auto">
-                        <div class="text-center mb-16">
-                            <h2 class="text-4xl md:text-5xl font-bold mb-6">Prêt(e) à Passer à l'Action ?</h2>
-                            <p class="text-xl text-primary-foreground/90 max-w-3xl mx-auto">Le moyen le plus simple de savoir si nous pouvons collaborer est d'en discuter. Choisissez le créneau qui vous convient ci-dessous pour un premier échange, gratuit et sans engagement. Cet appel nous permettra de faire le point sur vos ambitions et de vous apporter une première clarté.</p>
+                        <div class="text-center mb-16 reveal-up">
+                            <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Prêt(e) à Passer à l'Action ?</h2>
+                            <p class="text-xl text-muted-foreground max-w-3xl mx-auto">Le moyen le plus simple de savoir si nous pouvons collaborer est d'en discuter. Choisissez le créneau qui vous convient ci-dessous pour un premier échange, gratuit et sans engagement.</p>
                         </div>
-                        <div class="grid md:grid-cols-2 gap-8 items-center">
-                            <div class="rounded-lg border shadow-sm bg-card/10 backdrop-blur-sm border-primary-foreground/20 text-primary-foreground">
-                                <div class="flex flex-col space-y-1.5 p-6">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <div class="p-3 bg-accent rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-accent-foreground"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg></div>
+
+                        <!-- Calendly Widget Start -->
+                        <div class="bg-card rounded-lg shadow-card overflow-hidden border border-gray-200 reveal-up">
+                            <div class="grid md:grid-cols-12">
+                                <!-- Left Panel: Information -->
+                                <div class="md:col-span-5 p-8 border-r border-gray-200">
+                                    <!-- AJOUT : Lazy Loading pour l'image -->
+                                    <img src="images/portrait-julien-moreau.webp" alt="Portrait de Julien Moreau" class="w-20 h-20 rounded-full mb-4 object-cover" loading="lazy" decoding="async">
+                                    <p class="text-muted-foreground font-medium">Julien Moreau</p>
+                                    <h3 class="text-2xl font-bold text-primary mt-1 mb-4">Appel Stratégique (30 min)</h3>
+                                    
+                                    <div class="flex items-center text-muted-foreground mb-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                        <span>30 min</span>
                                     </div>
-                                    <h3 class="tracking-tight text-2xl font-bold">Appel Stratégique</h3>
-                                    <p class="text-sm text-primary-foreground/80">30 minutes pour clarifier vos défis et esquisser vos prochaines étapes</p>
+
+                                    <p class="text-muted-foreground text-sm leading-relaxed mb-6">
+                                        Cet échange gratuit de 30 minutes est la première étape pour faire le point sur vos défis et clarifier vos ambitions.
+                                    </p>
+
+                                    <div>
+                                        <p class="font-semibold text-primary mb-3">Objectif :</p>
+                                        <ul class="space-y-3 text-sm">
+                                            <li class="flex items-start">
+                                                <span class="text-accent mr-2 mt-0.5">👉</span>
+                                                <span class="text-muted-foreground">Faire le point sur votre principal défi de croissance actuel.</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-accent mr-2 mt-0.5">👉</span>
+                                                <span class="text-muted-foreground">Clarifier votre objectif n°1 pour les 6 prochains mois.</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-accent mr-2 mt-0.5">👉</span>
+                                                <span class="text-muted-foreground">Valider si mon approche est la bonne solution pour vous.</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <p class="text-muted-foreground text-sm leading-relaxed mt-8">
+                                        C'est un échange simple, concret et sans aucun engagement.
+                                    </p>
+                                    <p class="text-muted-foreground text-sm leading-relaxed mt-4">
+                                        J'ai hâte de découvrir les ambitions que vous avez pour votre entreprise !
+                                    </p>
+                                    <p class="text-primary font-semibold mt-6">Julien</p>
                                 </div>
-                                <div class="p-6 pt-0 space-y-6">
-                                    <div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-accent"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>30 minutes</span></div>
-                                    <div class="space-y-3">
-                                        <h4 class="font-semibold text-lg">Objectifs de cet échange :</h4>
-                                        <div class="space-y-2">
-                                            <div class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-accent mt-0.5 flex-shrink-0"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg><span class="text-sm">Faire le point sur votre principal défi de croissance actuel</span></div>
-                                            <div class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-accent mt-0.5 flex-shrink-0"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg><span class="text-sm">Clarifier votre objectif n°1 pour les 6 prochains mois</span></div>
-                                            <div class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-accent mt-0.5 flex-shrink-0"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg><span class="text-sm">Esquisser les premières pistes d'un plan d'action</span></div>
+
+                                <!-- Right Panel: Calendar -->
+                                <div class="md:col-span-7 p-6 md:p-8 relative overflow-hidden">
+                                    
+                                    <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" 
+                                       class="absolute text-center text-white font-bold uppercase tracking-wider"
+                                       style="top: 22px; right: -38px; transform: rotate(45deg); background-color: #374151; font-size: 10px; padding: 6px 35px;">
+                                         Calendly
+                                    </a>
+
+                                    <h4 class="text-lg font-bold text-primary mb-6">Sélectionnez la date et l'heure</h4>
+                                    
+                                    <div class="calendar">
+                                        <div class="flex items-center justify-between mb-4">
+                                            <button class="p-2 rounded-full hover:bg-gray-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gray-600"><path d="m15 18-6-6 6-6"></path></svg>
+                                            </button>
+                                            <p class="font-semibold text-primary">septembre 2025</p>
+                                            <button class="p-2 rounded-full hover:bg-gray-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gray-600"><path d="m9 18 6-6-6-6"></path></svg>
+                                            </button>
+                                        </div>
+
+                                        <div class="grid grid-cols-7 gap-1 text-center text-xs text-muted-foreground mb-2">
+                                            <span>LUN.</span>
+                                            <span>MAR.</span>
+                                            <span>MER.</span>
+                                            <span>JEU.</span>
+                                            <span>VEN.</span>
+                                            <span>SAM.</span>
+                                            <span>DIM.</span>
+                                        </div>
+
+                                        <div class="grid grid-cols-7 gap-y-1 place-items-center">
+                                            <!-- Dates for September 2025 -->
+                                            <div class="flex justify-center items-center h-10 w-10 text-primary font-medium">1</div>
+                                            <div class="flex justify-center items-center h-10 w-10 text-primary font-medium">2</div>
+                                            <div class="flex justify-center items-center h-10 w-10 text-primary font-medium">3</div>
+                                            <div class="flex justify-center items-center h-10 w-10 text-primary font-medium">4</div>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">5</button>
+                                            <div class="flex justify-center items-center h-10 w-10 text-gray-400">6</div>
+                                            <div class="flex justify-center items-center h-10 w-10 text-gray-400">7</div>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">8</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">9</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">10</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">11</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">12</button>
+                                            <div class="flex justify-center items-center h-10 w-10 text-gray-400">13</div>
+                                            <div class="flex justify-center items-center h-10 w-10 text-gray-400">14</div>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">15</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">16</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">17</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">18</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">19</button>
+                                            <div class="flex justify-center items-center h-10 w-10 text-gray-400">20</div>
+                                            <div class="flex justify-center items-center h-10 w-10 text-gray-400">21</div>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">22</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">23</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">24</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">25</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">26</button>
+                                            <div class="flex justify-center items-center h-10 w-10 text-gray-400">27</div>
+                                            <div class="flex justify-center items-center h-10 w-10 text-gray-400">28</div>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">29</button>
+                                            <button class="flex justify-center items-center h-10 w-10 text-blue-600 font-medium rounded-full bg-blue-100 hover:bg-blue-200">30</button>
                                         </div>
                                     </div>
-                                    <div class="bg-accent/10 p-4 rounded-lg border border-accent/20">
-                                        <p class="text-sm text-primary-foreground/90">À l'issue de cet appel, vous repartirez avec une vision plus claire, et nous saurons si une collaboration est la bonne prochaine étape pour vous.</p>
+
+                                    <div class="mt-8 pt-6 border-t border-gray-200">
+                                        <p class="font-semibold text-primary text-sm mb-2">Fuseau horaire</p>
+                                        <div class="flex items-center text-sm text-muted-foreground cursor-pointer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+                                            <span>Heure de l’Europe orientale (12:26)</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 ml-1"><path d="m6 9 6 6 6-6"></path></svg>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="space-y-8">
-                                <div class="text-center">
-                                    <h3 class="text-2xl font-bold mb-4">Planifiez votre appel</h3>
-                                    <p class="text-primary-foreground/80 mb-8">Choisissez le créneau qui vous convient le mieux</p>
-                                    <button class="text-lg px-8 py-4 w-full inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-accent text-accent-foreground hover:opacity-90 shadow-hero transition-all duration-300 font-semibold h-11 rounded-md">Planifier mon Appel Stratégique</button>
-                                </div>
-                                <div class="space-y-4">
-                                    <h4 class="font-semibold">Questions préparatoires :</h4>
-                                    <div class="space-y-3 text-sm text-primary-foreground/80">
-                                        <div class="bg-primary-foreground/10 p-4 rounded-lg">
-                                            <p class="font-medium text-primary-foreground mb-2">1. Votre principal défi :</p>
-                                            <p>Quel est votre principal objectif ou défi business en ce moment ?</p>
-                                        </div>
-                                        <div class="bg-primary-foreground/10 p-4 rounded-lg">
-                                            <p class="font-medium text-primary-foreground mb-2">2. Votre entreprise :</p>
-                                            <p>Merci de partager le lien vers le site web de votre entreprise.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <div class="mt-16 text-center">
-                            <div class="grid md:grid-cols-3 gap-8 text-center">
-                                <div class="space-y-2">
-                                    <div class="text-2xl font-bold text-accent">100%</div>
-                                    <p class="text-sm text-primary-foreground/80">Gratuit et sans engagement</p>
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="text-2xl font-bold text-accent">30min</div>
-                                    <p class="text-sm text-primary-foreground/80">Appel efficace et structuré</p>
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="text-2xl font-bold text-accent">24h</div>
-                                    <p class="text-sm text-primary-foreground/80">Confirmation rapide</p>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Calendly Widget End -->
                     </div>
                 </div>
             </section>
+            
             
             <!-- =================================================================
             FOOTER SECTION
@@ -712,51 +794,40 @@
                 });
             });
 
-            // --- FAQ Accordion Logic ---
-            const accordionItems = document.querySelectorAll('.border.border-border.rounded-lg.px-6');
+            // --- AMÉLIORATION FAQ : Logique pour l'accordéon fluide ---
+            const faqItems = document.querySelectorAll('#faq .border-border');
             
-            accordionItems.forEach(item => {
+            faqItems.forEach(item => {
                 const trigger = item.querySelector('.faq-trigger');
                 const content = item.querySelector('.faq-content');
+                const contentInner = content.querySelector('div');
 
-                trigger.addEventListener('click', () => {
+                content.style.height = '0px';
+
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
                     const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
 
-                    // Close all other items first
-                    accordionItems.forEach(otherItem => {
+                    faqItems.forEach(otherItem => {
                         if (otherItem !== item) {
-                            otherItem.dataset.state = 'closed';
-                            otherItem.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+                            const otherTrigger = otherItem.querySelector('.faq-trigger');
                             const otherContent = otherItem.querySelector('.faq-content');
+                            otherTrigger.setAttribute('aria-expanded', 'false');
+                            otherItem.dataset.state = 'closed';
                             otherContent.style.height = '0px';
-                            otherContent.hidden = true;
                         }
                     });
-                    
-                    // Toggle the clicked item
+
                     if (isExpanded) {
-                        item.dataset.state = 'closed';
                         trigger.setAttribute('aria-expanded', 'false');
+                        item.dataset.state = 'closed';
                         content.style.height = '0px';
-                        content.hidden = true;
                     } else {
-                        item.dataset.state = 'open';
                         trigger.setAttribute('aria-expanded', 'true');
-                        content.hidden = false;
-                        // Set height to scrollHeight for animation
-                        content.style.height = content.scrollHeight + 'px';
+                        item.dataset.state = 'open';
+                        content.style.height = contentInner.scrollHeight + 'px';
                     }
                 });
-
-                // Set initial state based on HTML attributes
-                const contentDiv = item.querySelector('.faq-content > div');
-                if (item.dataset.state === 'open') {
-                    content.hidden = false;
-                    content.style.height = content.scrollHeight + 'px';
-                } else {
-                    content.hidden = true;
-                    content.style.height = '0px';
-                }
             });
             
             // --- Sticky Navbar Background Change ---
@@ -770,7 +841,6 @@
                     navbar.classList.add('bg-transparent', 'border-transparent');
                 }
             });
-            // Initial check in case page is reloaded scrolled down
             if (window.scrollY > 10) {
                 navbar.classList.add('bg-primary/95', 'border-primary-foreground/20');
                 navbar.classList.remove('bg-transparent', 'border-transparent');
@@ -778,7 +848,29 @@
                  navbar.classList.add('bg-transparent', 'border-transparent');
             }
 
+            // =================================================================
+            // AJOUT : SCROLL REVEAL (UNIQUEMENT SUR ÉCRANS LARGES)
+            // =================================================================
+            if (window.matchMedia('(min-width: 1024px)').matches) {
+                const sr = ScrollReveal({
+                    origin: 'bottom',
+                    distance: '50px',
+                    duration: 800,
+                    delay: 100,
+                    easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                    reset: false // L'animation ne se joue qu'une seule fois
+                });
 
+                // Cibles générales
+                sr.reveal('.reveal-up', { interval: 150 });
+                sr.reveal('.reveal-left', { origin: 'left', distance: '80px' });
+                sr.reveal('.reveal-right', { origin: 'right', distance: '80px' });
+
+                // Cibles spécifiques pour un meilleur contrôle
+                sr.reveal('#about .text-center, #services .text-center, #approche .text-center, #testimonials .text-center, #faq .text-center, #contact .text-center', {
+                    delay: 200
+                });
+            }
         });
     </script>
 </body>
