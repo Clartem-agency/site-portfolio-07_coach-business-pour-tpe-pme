@@ -9,14 +9,12 @@
     <meta name="keywords" content="coach affaires, coaching dirigeants, PME, stratégie entreprise, croissance, management, leadership">
     <link rel="canonical" href="https://horizon-strategie.com">
 
-    <!-- MODIFIÉ : Chemin de l'image pour le partage sur les réseaux sociaux -->
     <meta property="og:title" content="Julien Moreau - Coach d'Affaires pour Dirigeants de PME">
     <meta property="og:description" content="Coaching d'affaires pour dirigeants de PME. Sortez de l'opérationnel et transformez votre vision en feuille de route stratégique.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://horizon-strategie.com">
     <meta property="og:image" content="https://horizon-strategie.com/images/apercu-partage-social.webp">
 
-    <!-- MODIFIÉ : Chemin de l'image pour le partage sur Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Julien Moreau - Coach d'Affaires pour Dirigeants de PME">
     <meta name="twitter:description" content="Coaching d'affaires pour dirigeants de PME. Sortez de l'opérationnel et transformez votre vision en feuille de route stratégique.">
@@ -46,7 +44,6 @@
             scroll-behavior: smooth;
         }
 
-        /* MODIFIÉ : Ajout de l'image de fond pour la section hero */
         #hero::before {
             content: '';
             position: absolute;
@@ -59,6 +56,12 @@
             background-position: center;
             opacity: 0.1; /* Opacité faible pour un effet subtil derrière le dégradé */
             z-index: 0;
+        }
+
+        /* AMÉLIORATION FAQ : Style pour la transition fluide */
+        .faq-content {
+            overflow: hidden;
+            transition: height 0.3s ease-in-out;
         }
     </style>
 
@@ -106,20 +109,7 @@
                         'card': '0 4px 20px rgba(0, 0, 0, 0.05)',
                         'hero': '0 6px 24px rgba(251, 196, 107, 0.4)',
                     },
-                    keyframes: {
-                        "accordion-down": {
-                            from: { height: "0" },
-                            to: { height: "var(--radix-accordion-content-height)" },
-                        },
-                        "accordion-up": {
-                            from: { height: "var(--radix-accordion-content-height)" },
-                            to: { height: "0" },
-                        },
-                    },
-                    animation: {
-                        "accordion-down": "accordion-down 0.2s ease-out",
-                        "accordion-up": "accordion-up 0.2s ease-out",
-                    },
+                    // AMÉLIORATION FAQ : Suppression des keyframes et animations devenues inutiles
                 },
             },
         };
@@ -186,36 +176,35 @@
             </section>
 
            <!-- =================================================================
-ABOUT SECTION
-================================================================== -->
-<section id="about" class="py-20 bg-background">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Mon Parcours : De COO à Sparring Partner pour Dirigeants</h2>
-            </div>
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="order-2 lg:order-1 space-y-6">
-                    <div class="space-y-4">
-                        <p class="text-lg text-muted-foreground leading-relaxed">Pendant 15 ans, j'ai été Directeur des Opérations. J'ai eu la chance de vivre de l'intérieur la transformation d'une PME de 20 à plus de 200 collaborateurs. Mon rôle n'était pas dans les nuages, mais dans les tranchées : structurer les équipes, optimiser les process, et surtout, m'assurer que la vision du dirigeant se traduise en actions concrètes sur le terrain. J'ai connu la pression des objectifs, la complexité des décisions et le défi constant de garder le cap dans la tempête de la croissance.</p>
-                        <p class="text-lg text-muted-foreground leading-relaxed">Au fil des années, j'ai vu d'innombrables dirigeants brillants, passionnés par leur métier, devenir prisonniers de leur propre succès. Bloqués dans le quotidien, ils passaient plus de temps à éteindre des incendies qu'à dessiner l'avenir. Le constat était toujours le même : le principal frein à leur croissance n'était plus le marché, mais leur propre difficulté à passer du rôle d'expert à celui de leader. C'est pour cette raison que j'ai fondé Horizon Stratégie. Ma mission est simple : vous donner les outils et le cadre pour que vous puissiez à nouveau piloter votre entreprise, et non plus la subir.</p>
-                        <p class="text-lg text-muted-foreground leading-relaxed">Je ne suis pas un coach qui vous donnera des conseils théoriques. Mon approche est celle d'un 'COO à temps partagé'. Nous travaillons ensemble sur vos défis réels : comment mieux déléguer, comment structurer votre comité de direction, comment définir des objectifs clairs (OKRs) que votre équipe comprend et s'approprie. Je suis votre sparring partner, celui qui vous challenge avec bienveillance et vous aide à prendre de la hauteur pour prendre les bonnes décisions.</p>
-                        <div class="bg-accent-muted border-l-4 border-accent p-6 rounded-r-lg">
-                            <p class="text-lg text-primary font-medium">Mon engagement est de vous apporter une clarté absolue. À la fin de notre collaboration, vous n'aurez pas seulement résolu un problème ponctuel. Vous disposerez d'un système de pilotage robuste pour votre entreprise et d'une confiance renouvelée en votre capacité à la mener vers ses plus grandes ambitions.</p>
+            ABOUT SECTION
+            ================================================================== -->
+            <section id="about" class="py-20 bg-background">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-6xl mx-auto">
+                        <div class="text-center mb-16">
+                            <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Mon Parcours : De COO à Sparring Partner pour Dirigeants</h2>
+                        </div>
+                        <div class="grid lg:grid-cols-2 gap-12 items-center">
+                            <div class="order-2 lg:order-1 space-y-6">
+                                <div class="space-y-4">
+                                    <p class="text-lg text-muted-foreground leading-relaxed">Pendant 15 ans, j'ai été Directeur des Opérations. J'ai eu la chance de vivre de l'intérieur la transformation d'une PME de 20 à plus de 200 collaborateurs. Mon rôle n'était pas dans les nuages, mais dans les tranchées : structurer les équipes, optimiser les process, et surtout, m'assurer que la vision du dirigeant se traduise en actions concrètes sur le terrain. J'ai connu la pression des objectifs, la complexité des décisions et le défi constant de garder le cap dans la tempête de la croissance.</p>
+                                    <p class="text-lg text-muted-foreground leading-relaxed">Au fil des années, j'ai vu d'innombrables dirigeants brillants, passionnés par leur métier, devenir prisonniers de leur propre succès. Bloqués dans le quotidien, ils passaient plus de temps à éteindre des incendies qu'à dessiner l'avenir. Le constat était toujours le même : le principal frein à leur croissance n'était plus le marché, mais leur propre difficulté à passer du rôle d'expert à celui de leader. C'est pour cette raison que j'ai fondé Horizon Stratégie. Ma mission est simple : vous donner les outils et le cadre pour que vous puissiez à nouveau piloter votre entreprise, et non plus la subir.</p>
+                                    <p class="text-lg text-muted-foreground leading-relaxed">Je ne suis pas un coach qui vous donnera des conseils théoriques. Mon approche est celle d'un 'COO à temps partagé'. Nous travaillons ensemble sur vos défis réels : comment mieux déléguer, comment structurer votre comité de direction, comment définir des objectifs clairs (OKRs) que votre équipe comprend et s'approprie. Je suis votre sparring partner, celui qui vous challenge avec bienveillance et vous aide à prendre de la hauteur pour prendre les bonnes décisions.</p>
+                                    <div class="bg-accent-muted border-l-4 border-accent p-6 rounded-r-lg">
+                                        <p class="text-lg text-primary font-medium">Mon engagement est de vous apporter une clarté absolue. À la fin de notre collaboration, vous n'aurez pas seulement résolu un problème ponctuel. Vous disposerez d'un système de pilotage robuste pour votre entreprise et d'une confiance renouvelée en votre capacité à la mener vers ses plus grandes ambitions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-1 lg:order-2 flex justify-center">
+                                <div class="relative w-full max-w-md lg:max-w-none">
+                                    <img src="images/portrait-julien-moreau.webp" alt="Julien Moreau, Coach d'affaires et sparring partner stratégique" class="w-full h-full object-cover rounded-lg shadow-hero">
+                                    <div class="absolute -bottom-4 -right-4 bg-accent text-accent-foreground px-6 py-3 rounded-full font-semibold shadow-card">15 ans d'expérience COO</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- CORRIGÉ : Structure de l'image et du badge -->
-                <div class="order-1 lg:order-2 flex justify-center">
-                    <div class="relative w-full max-w-md lg:max-w-none">
-                        <img src="images/portrait-julien-moreau.webp" alt="Julien Moreau, Coach d'affaires et sparring partner stratégique" class="w-full h-full object-cover rounded-lg shadow-hero">
-                        <div class="absolute -bottom-4 -right-4 bg-accent text-accent-foreground px-6 py-3 rounded-full font-semibold shadow-card">15 ans d'expérience COO</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
 
             
             <!-- =================================================================
@@ -518,7 +507,8 @@ ABOUT SECTION
                                     <h3 data-orientation="vertical" data-state="closed" class="flex">
                                         <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" class="faq-trigger flex flex-1 items-center justify-between hover:underline [&[data-state=open]>svg]:rotate-180 text-left text-lg font-semibold text-primary hover:text-accent transition-colors py-6">Quelle est la différence entre un coach et un consultant ?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-200"><path d="m6 9 6 6 6-6"></path></svg></button>
                                     </h3>
-                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down" hidden="">
+                                    <!-- AMÉLIORATION FAQ : Suppression des classes d'animation et utilisation de la classe .faq-content -->
+                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content text-sm">
                                         <div class="pt-0 text-muted-foreground leading-relaxed pb-6">C'est une excellente question. Un consultant analyse une situation et vous apporte une solution 'clé en main'. Mon approche est différente. En tant que coach, je vous aide à construire VOTRE propre solution. Je vous apporte la structure, les outils et le challenge, mais je m'assure que la stratégie finale vienne de vous et de vos équipes. C'est la garantie qu'elle sera parfaitement adaptée à votre culture et, surtout, qu'elle sera appliquée sur le long terme.</div>
                                     </div>
                                 </div>
@@ -527,7 +517,7 @@ ABOUT SECTION
                                     <h3 data-orientation="vertical" data-state="closed" class="flex">
                                         <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" class="faq-trigger flex flex-1 items-center justify-between hover:underline [&[data-state=open]>svg]:rotate-180 text-left text-lg font-semibold text-primary hover:text-accent transition-colors py-6">Comment mesure-t-on le retour sur investissement (ROI) de vos accompagnements ?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-200"><path d="m6 9 6 6 6-6"></path></svg></button>
                                     </h3>
-                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down" hidden="">
+                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content text-sm">
                                         <div class="pt-0 text-muted-foreground leading-relaxed pb-6">La mesure est au cœur de ma méthode. Dès notre première étape de diagnostic, nous définissons ensemble des indicateurs de succès (KPIs) clairs et chiffrés. Ils peuvent être financiers (croissance du CA, marge), opérationnels (productivité, taux de rétention des talents) ou personnels (temps gagné pour le dirigeant). Notre suivi régulier est basé sur ces KPIs, ce qui nous permet de mesurer concrètement l'impact de mon intervention.</div>
                                     </div>
                                 </div>
@@ -536,16 +526,16 @@ ABOUT SECTION
                                     <h3 data-orientation="vertical" data-state="closed" class="flex">
                                         <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" class="faq-trigger flex flex-1 items-center justify-between hover:underline [&[data-state=open]>svg]:rotate-180 text-left text-lg font-semibold text-primary hover:text-accent transition-colors py-6">Mon entreprise n'est pas dans le secteur de la tech. Votre approche est-elle adaptée ?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-200"><path d="m6 9 6 6 6-6"></path></svg></button>
                                     </h3>
-                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down" hidden="">
+                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content text-sm">
                                         <div class="pt-0 text-muted-foreground leading-relaxed pb-6">Absolument. J'accompagne majoritairement des PME de services, quel que soit leur secteur (conseil, agences, ingénierie, etc.). Les défis de la croissance - structurer une équipe, déléguer, piloter par la donnée, garder une vision claire - sont universels. Mon cadre méthodologique s'adapte précisément à votre contexte et à vos enjeux spécifiques.</div>
                                     </div>
                                 </div>
                                 <!-- FAQ Item 4 -->
-                                <div data-state="open" data-orientation="vertical" class="border border-border rounded-lg px-6">
-                                    <h3 data-orientation="vertical" data-state="open" class="flex">
-                                        <button type="button" aria-expanded="true" data-state="open" data-orientation="vertical" class="faq-trigger flex flex-1 items-center justify-between hover:underline [&[data-state=open]>svg]:rotate-180 text-left text-lg font-semibold text-primary hover:text-accent transition-colors py-6">Je n'ai pas beaucoup de temps à consacrer au coaching. Est-ce un problème ?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-200"><path d="m6 9 6 6 6-6"></path></svg></button>
+                                <div data-state="closed" data-orientation="vertical" class="border border-border rounded-lg px-6">
+                                    <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                        <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" class="faq-trigger flex flex-1 items-center justify-between hover:underline [&[data-state=open]>svg]:rotate-180 text-left text-lg font-semibold text-primary hover:text-accent transition-colors py-6">Je n'ai pas beaucoup de temps à consacrer au coaching. Est-ce un problème ?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-200"><path d="m6 9 6 6 6-6"></path></svg></button>
                                     </h3>
-                                    <div data-state="open" role="region" data-orientation="vertical" class="faq-content overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                                    <div data-state="closed" role="region" data-orientation="vertical" class="faq-content text-sm">
                                         <div class="pt-0 text-muted-foreground leading-relaxed pb-6">Au contraire, mon accompagnement est conçu pour vous faire GAGNER du temps. Nos sessions bimensuelles de 60 minutes sont des moments à haute valeur ajoutée, préparés et focalisés sur l'action. L'objectif est que chaque session vous permette de prendre des décisions plus rapides et plus efficaces, libérant ainsi un temps précieux pour le reste de vos semaines.</div>
                                     </div>
                                 </div>
@@ -561,7 +551,7 @@ ABOUT SECTION
             </section>
             
 
-                        <!-- =================================================================
+            <!-- =================================================================
             CONTACT SECTION
             ================================================================== -->
             <section id="contact" class="py-20 bg-gradient-section">
@@ -620,7 +610,6 @@ ABOUT SECTION
                                 <!-- Right Panel: Calendar -->
                                 <div class="md:col-span-7 p-6 md:p-8 relative overflow-hidden">
                                     
-                                    <!-- CORRIGÉ : Calendly Badge -->
                                     <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" 
                                        class="absolute text-center text-white font-bold uppercase tracking-wider"
                                        style="top: 22px; right: -38px; transform: rotate(45deg); background-color: #374151; font-size: 10px; padding: 6px 35px;">
@@ -796,51 +785,44 @@ ABOUT SECTION
                 });
             });
 
-            // --- FAQ Accordion Logic ---
-            const accordionItems = document.querySelectorAll('.border.border-border.rounded-lg.px-6');
+            // --- AMÉLIORATION FAQ : Logique pour l'accordéon fluide ---
+            const faqItems = document.querySelectorAll('#faq .border-border');
             
-            accordionItems.forEach(item => {
+            faqItems.forEach(item => {
                 const trigger = item.querySelector('.faq-trigger');
                 const content = item.querySelector('.faq-content');
+                const contentInner = content.querySelector('div');
 
-                trigger.addEventListener('click', () => {
+                // Initialiser tous les contenus à une hauteur de 0
+                content.style.height = '0px';
+
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
                     const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
 
-                    // Close all other items first
-                    accordionItems.forEach(otherItem => {
+                    // Fermer tous les autres accordéons
+                    faqItems.forEach(otherItem => {
                         if (otherItem !== item) {
-                            otherItem.dataset.state = 'closed';
-                            otherItem.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+                            const otherTrigger = otherItem.querySelector('.faq-trigger');
                             const otherContent = otherItem.querySelector('.faq-content');
+                            otherTrigger.setAttribute('aria-expanded', 'false');
+                            otherItem.dataset.state = 'closed';
                             otherContent.style.height = '0px';
-                            otherContent.hidden = true;
                         }
                     });
-                    
-                    // Toggle the clicked item
+
+                    // Ouvrir ou fermer l'accordéon cliqué
                     if (isExpanded) {
-                        item.dataset.state = 'closed';
                         trigger.setAttribute('aria-expanded', 'false');
+                        item.dataset.state = 'closed';
                         content.style.height = '0px';
-                        content.hidden = true;
                     } else {
-                        item.dataset.state = 'open';
                         trigger.setAttribute('aria-expanded', 'true');
-                        content.hidden = false;
-                        // Set height to scrollHeight for animation
-                        content.style.height = content.scrollHeight + 'px';
+                        item.dataset.state = 'open';
+                        // On calcule la hauteur du contenu réel pour l'animation
+                        content.style.height = contentInner.scrollHeight + 'px';
                     }
                 });
-
-                // Set initial state based on HTML attributes
-                const contentDiv = item.querySelector('.faq-content > div');
-                if (item.dataset.state === 'open') {
-                    content.hidden = false;
-                    content.style.height = content.scrollHeight + 'px';
-                } else {
-                    content.hidden = true;
-                    content.style.height = '0px';
-                }
             });
             
             // --- Sticky Navbar Background Change ---
@@ -861,8 +843,6 @@ ABOUT SECTION
             } else {
                  navbar.classList.add('bg-transparent', 'border-transparent');
             }
-
-
         });
     </script>
 </body>
