@@ -9,16 +9,18 @@
     <meta name="keywords" content="coach affaires, coaching dirigeants, PME, stratégie entreprise, croissance, management, leadership">
     <link rel="canonical" href="https://horizon-strategie.com">
 
+    <!-- MODIFIÉ : Chemin de l'image pour le partage sur les réseaux sociaux -->
     <meta property="og:title" content="Julien Moreau - Coach d'Affaires pour Dirigeants de PME">
     <meta property="og:description" content="Coaching d'affaires pour dirigeants de PME. Sortez de l'opérationnel et transformez votre vision en feuille de route stratégique.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://horizon-strategie.com">
-    <meta property="og:image" content="https://horizon-strategie.com/og-image.jpg">
+    <meta property="og:image" content="https://horizon-strategie.com/images/apercu-partage-social.webp">
 
+    <!-- MODIFIÉ : Chemin de l'image pour le partage sur Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Julien Moreau - Coach d'Affaires pour Dirigeants de PME">
     <meta name="twitter:description" content="Coaching d'affaires pour dirigeants de PME. Sortez de l'opérationnel et transformez votre vision en feuille de route stratégique.">
-    <meta name="twitter:image" content="https://horizon-strategie.com/og-image.jpg">
+    <meta name="twitter:image" content="https://horizon-strategie.com/images/apercu-partage-social.webp">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,6 +44,21 @@
         }
         html {
             scroll-behavior: smooth;
+        }
+
+        /* MODIFIÉ : Ajout de l'image de fond pour la section hero */
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('images/fond-hero.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1; /* Opacité faible pour un effet subtil derrière le dégradé */
+            z-index: 0;
         }
     </style>
 
@@ -191,7 +208,8 @@
                             <div class="order-1 lg:order-2 flex justify-center">
                                 <div class="relative">
                                     <div class="w-80 h-80 rounded-full overflow-hidden shadow-hero">
-                                        <img src="https://i.imgur.com/uR1b92t.jpeg" alt="Julien Moreau, Coach d'affaires et sparring partner stratégique" class="w-full h-full object-cover">
+                                        <!-- MODIFIÉ : Chemin de l'image de portrait -->
+                                        <img src="images/portrait-julien-moreau.webp" alt="Julien Moreau, Coach d'affaires et sparring partner stratégique" class="w-full h-full object-cover">
                                     </div>
                                     <div class="absolute -bottom-4 -right-4 bg-accent text-accent-foreground px-6 py-3 rounded-full font-semibold shadow-card">15 ans d'expérience COO</div>
                                 </div>
@@ -201,6 +219,8 @@
                 </div>
             </section>
 
+            <!-- ... Le reste du code reste inchangé ... -->
+            
             <!-- =================================================================
             SERVICES SECTION
             ================================================================== -->
